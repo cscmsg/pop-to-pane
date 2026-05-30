@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Pop to Pane",
+  "version": "1.0.0",
+  "description": "Pop the current tab into a clean, chrome-less popup window for desktop monitoring panes. Reuses your existing login/session.",
+  "permissions": ["contextMenus", "tabs", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Pop into clean pane"
+  },
+  "commands": {
+    "pop-to-pane": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "Pop the current tab into a clean pane"
+    }
+  }
+}
