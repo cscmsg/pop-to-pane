@@ -94,6 +94,10 @@ chrome.commands.onCommand.addListener((command, tab) => {
     popToPane(tab.url);
   } else {
     // Older Chrome (or edge cases) may not pass the tab — query for it.
+    // tabs.query needs no permission of its own; `url` comes back populated
+    // because activeTab has just been granted for this tab by the keyboard
+    // command. If it ever isn't, isPoppable rejects the undefined and we badge
+    // "skip" rather than throwing.
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
       if (tabs && tabs[0]) popToPane(tabs[0].url);
     });

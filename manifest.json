@@ -3,7 +3,7 @@
   "name": "Pop to Pane",
   "version": "1.0.0",
   "description": "Pop the current tab into a clean, chrome-less popup window for desktop monitoring panes. Reuses your existing login/session.",
-  "permissions": ["contextMenus", "tabs", "storage"],
+  "permissions": ["contextMenus", "activeTab", "storage"],
   "background": {
     "service_worker": "background.js"
   },

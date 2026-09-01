@@ -95,9 +95,11 @@ Chrome's front window directly.
 
 | File | Purpose |
 |------|---------|
-| `manifest.json` | MV3 manifest — name, permissions (`contextMenus`, `tabs`, `storage`), service worker, action, keyboard command. |
+| `manifest.json` | MV3 manifest — name, permissions (`contextMenus`, `activeTab`, `storage`), service worker, action, keyboard command. |
 | `background.js` | Service worker. Wires all three triggers to one `popToPane(url)`; persists the cascade counter in `chrome.storage.local`. |
 | `borderless-pane.sh` | Optional macOS `--app`-mode launcher for a fully borderless frame. |
+| `LICENSE` | MIT. |
+| `PRIVACY.md` | Privacy policy (nothing is collected; required as a Web Store listing field). |
 | `README.md` | This file. |
 
 No icon files are bundled, so Chrome shows a default action icon. Add a
@@ -108,5 +110,22 @@ No icon files are bundled, so Chrome shows a default action icon. Add a
 - The cascade counter lives in `chrome.storage.local` and only advances (mod 6
   for position). It is not reset on browser restart — it just continues the
   staircase, which is fine.
-- The `tabs` permission is what lets the extension read the active tab's URL. No
-  host permissions are requested, and the extension never reads page content.
+- **`activeTab` is what lets the extension read the current tab's address**, and
+  only at the moment you invoke it — the grant is scoped to that one tab and
+  lapses when you navigate away. All three triggers (action click, context menu,
+  keyboard command) are gestures Chrome accepts as granting it, so the broader
+  `tabs` permission is not needed. No host permissions are requested, and the
+  extension never reads page content.
+- The `chrome.tabs.query` call in the command handler is a fallback for the case
+  where Chrome does not pass a tab to the listener. `tabs.query` itself needs no
+  permission; the address comes back populated because `activeTab` has just been
+  granted for that tab. If it ever is not, `isPoppable` rejects the empty value
+  and the toolbar badge shows `skip` rather than the extension failing.
+
+## Privacy
+
+Nothing is collected, stored about you, or transmitted. See [PRIVACY.md](PRIVACY.md).
+
+## License
+
+MIT — see [LICENSE](LICENSE).
