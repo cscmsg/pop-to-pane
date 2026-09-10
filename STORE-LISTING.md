@@ -114,7 +114,7 @@ a fully borderless window.
 
 ## Pre-submit checklist
 
-- [ ] `default_icon` added (16/32/48/128) — currently missing
+- [x] Icons added (16/32/48/128 in `icons/`, drawn by `scripts/make_icons.swift`), wired as both `icons` and the action's `default_icon`
 - [ ] Screenshots (1280×800 or 640×400), at least one
 - [ ] Privacy policy hosted at a stable URL and pasted into the dashboard
 - [ ] `$5` registration paid
