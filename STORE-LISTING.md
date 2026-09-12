@@ -50,7 +50,7 @@ code.
 > None requested.
 
 **Remote code**
-> None. The extension is a single service worker bundled with the package; it loads no external
+> None. The extension is a single service worker bundled with the package. It loads no external
 > scripts and makes no network requests.
 
 ## Data usage disclosures
@@ -81,8 +81,8 @@ the single purpose, and is not used to determine creditworthiness or for lending
 > Pop the current tab into a clean, chrome-less window you can park anywhere. Keeps your login. Great for monitoring panes.
 
 **Detailed description:**
-> Pop to Pane opens whatever page you are on in a bare popup window — no tab strip, no toolbar, no
-> address bar — so you can arrange pages around your desktop and watch them.
+> Pop to Pane opens whatever page you are on in a bare popup window, with no tab strip, toolbar or
+> address bar. Arrange pages around your desktop and watch them.
 >
 > It opens in your current Chrome profile, so anything you are already signed in to just works. No
 > re-authentication, no separate profile.
@@ -91,18 +91,31 @@ the single purpose, and is not used to determine creditworthiness or for lending
 >   keyboard shortcut (rebindable at chrome://extensions/shortcuts).
 > - Panes cascade by 36px and cycle every six, so they staircase instead of landing on top of each
 >   other.
-> - Your original tab stays open. Panes are independent windows — moving or closing one does not
+> - Your original tab stays open. Panes are independent windows, so moving or closing one does not
 >   affect the others.
-> - Only works on http(s) pages; browser and extension pages are skipped.
+> - Only works on http(s) pages. Browser and extension pages are skipped.
 >
 > Privacy: it collects nothing, stores nothing about you, and sends nothing anywhere. There is no
 > server and no analytics. It requests no host permissions, so it has no standing access to any
-> site — it reads the current tab's address only at the moment you invoke it, and never reads page
+> site. It reads the current tab's address only at the moment you invoke it, and never reads page
 > content.
 >
 > Open source (MIT): https://github.com/cscmsg/pop-to-pane
 
 **Category:** Workflow & Planning · **Language:** English
+
+**Homepage URL:** https://github.com/cscmsg/pop-to-pane
+
+**Screenshot:** [`store/screenshot-1280x800.png`](store/screenshot-1280x800.png)
+
+## Test instructions for the reviewer
+
+> No account or credentials are needed. Open any ordinary http(s) web page, then trigger the
+> extension any of three ways: click its toolbar button, press Ctrl+Shift+U (Command+Shift+U on
+> Mac), or right-click the page background and choose "Pop into clean pane". The page opens in a
+> new popup window with no tab strip or address bar, and each further pane opens 36px down and to
+> the right of the last. On browser pages such as chrome://extensions it does nothing and shows a
+> "skip" badge.
 
 ## Known limitation to state honestly
 
@@ -115,8 +128,10 @@ a fully borderless window.
 ## Pre-submit checklist
 
 - [x] Icons added (16/32/48/128 in `icons/`, drawn by `scripts/make_icons.swift`), wired as both `icons` and the action's `default_icon`
-- [ ] Screenshots (1280×800 or 640×400), at least one
-- [ ] Privacy policy hosted at a stable URL and pasted into the dashboard
-- [ ] `$5` registration paid
-- [ ] Version in `manifest.json` set for the release (currently `1.0.0`)
-- [ ] Loaded unpacked and all three triggers re-tested **after the `activeTab` change**
+- [x] Screenshot, 1280×800: `store/screenshot-1280x800.png`
+- [x] Privacy policy hosted at a stable URL (the rendered `PRIVACY.md` on GitHub) and pasted into the dashboard
+- [x] `$5` registration paid
+- [x] Version in `manifest.json` set for the release: `1.0.0`
+- [x] Loaded unpacked and all three triggers re-tested **after the `activeTab` change**: toolbar button, context menu, keyboard shortcut
+
+**Submitted 2026-09-12** as item `dhoanhdibfhdhkbaggkbneiojbfglanc`, pending review.
